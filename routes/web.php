@@ -24,7 +24,6 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/dashboard', function(){
     return view('ecomProject.dashboard');
 });
-Route::get('/test', [App\Http\Controllers\ProductsController::class, 'index'])->name('products');
 
 Route::get('/users', [App\Http\Controllers\UserController::class, 'index'])->name('users.index');
 Route::get('/users/create', [App\Http\Controllers\UserController::class, 'create'])->name("users.create");
@@ -46,3 +45,10 @@ Route::post('/brands/store', [App\Http\Controllers\BrandController::class, 'stor
 Route::get('/brands/edit/{id}', [App\Http\Controllers\BrandController::class, 'edit'])->name("brands.edit");
 Route::post('/brands/update/{id}', [App\Http\Controllers\BrandController::class, 'update'])->name("brands.update");
 Route::get('/brands/delete/{id}', [App\Http\Controllers\BrandController::class, 'delete'])->name("brands.delete");
+
+Route::get('/products', [App\Http\Controllers\ProductsController::class, 'index'])->name('products.index');
+Route::get('/products/create', [App\Http\Controllers\ProductsController::class, 'create'])->name("products.create");
+Route::post('/products/store', [App\Http\Controllers\ProductsController::class, 'store'])->name("products.store");
+Route::get('/products/edit/{slug}', [App\Http\Controllers\ProductsController::class, 'edit'])->name("products.edit");
+Route::post('/products/update/{slug}', [App\Http\Controllers\ProductsController::class, 'update'])->name("products.update");
+Route::get('/products/delete/{id}', [App\Http\Controllers\ProductsController::class, 'delete'])->name("products.delete");

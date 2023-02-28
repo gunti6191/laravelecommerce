@@ -16,7 +16,7 @@ class BrandController extends Controller
             return Datatables::of($data)
                     ->addIndexColumn()
                     ->addColumn('action', function($row){
-                        $btn = '<a href="javascript:void(0)" onclick="editBtn('.$row->id.');" class="edit btn btn-success btn-sm mx-3">Edit</a>
+                        $btn = '<a href="'.route("brands.edit", $row->slug ).'" class="edit btn btn-success btn-sm mx-3">Edit</a>
                                 <a href="javascript:void(0)" onclick="deleteBtn('.$row->id.');" class="delete btn btn-danger btn-sm">Delete</a>';
 
                         return $btn;
@@ -45,7 +45,7 @@ class BrandController extends Controller
         return redirect()->route('brands.index');
     }
     function edit($id){
-        $brand = Brand::where('id', $id)->first();
+        $brand = Brand::where('slug', $id)->first();
         $data['brand'] = $brand;
         return view('ecomProject.brands.editBrand', $data);
     }

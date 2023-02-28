@@ -16,7 +16,7 @@ class CategoryController extends Controller
             return Datatables::of($data)
                     ->addIndexColumn()
                     ->addColumn('action', function($row){
-                        $btn = '<a href="javascript:void(0)" onclick="editBtn('.$row->id.');" class="edit btn btn-success btn-sm mx-3">Edit</a>
+                        $btn = '<a href="'.route("categories.edit", $row->slug ).'" class="edit btn btn-success btn-sm mx-3">Edit</a>
                                 <a href="javascript:void(0)" onclick="deleteBtn('.$row->id.');" class="delete btn btn-danger btn-sm">Delete</a>';
 
                         return $btn;
@@ -45,7 +45,7 @@ class CategoryController extends Controller
         return redirect()->route('categories.index');
     }
     function edit($id){
-        $category = Category::where('id', $id)->first();
+        $category = Category::where('slug', $id)->first();
         $data['category'] = $category;
         return view('ecomProject.categories.editCategory', $data);
     }

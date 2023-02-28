@@ -136,10 +136,6 @@
 
         });
 
-        function editBtn(id){
-            window.location.href="{{ route('categories.edit','') }}"+"/"+id;
-        }
-
         function deleteBtn(id){
             const swalWithBootstrapButtons = Swal.mixin({
             customClass: {

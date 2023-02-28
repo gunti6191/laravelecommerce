@@ -53,7 +53,7 @@
             <ol class="breadcrumb float-sm-left">
                 <li class="breadcrumb-item"><a href="#"><i class="fas fa-home"></i></a></li>
                 <li class="breadcrumb-item">Ecommerce</li>
-                <li class="breadcrumb-item">Brand</li>
+                <li class="breadcrumb-item">Products</li>
                 <li class="breadcrumb-item active">List</li>
             </ol>
           </div>
@@ -68,8 +68,8 @@
           <div class="col-12">
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title pl-5" style="line-height: 60px;">BRANDS</h3>
-                <a href="{{ route('brands.create') }}" class="btn bg-gradient-primary btn-lg float-right mx-3"><b>ADD</b></a>
+                <h3 class="card-title pl-5" style="line-height: 60px;">PRODUCTS</h3>
+                <a href="{{ route('products.create') }}" class="btn bg-gradient-primary btn-lg float-right mx-3"><b>ADD</b></a>
               </div>
               <!-- /.card-header -->
               <div class="card-body">
@@ -78,8 +78,12 @@
                         <tr>
                             <th>Id</th>
                             <th>Name</th>
-                            <th>Slug</th>
                             <th>Status</th>
+                            <th>Rating</th>
+                            <th>Price</th>
+                            <th>Cost Price</th>
+                            <th>Discount?</th>
+                            <th>Discount Price</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -89,8 +93,12 @@
                         <tr>
                             <th>Id</th>
                             <th>Name</th>
-                            <th>Slug</th>
                             <th>Status</th>
+                            <th>Rating</th>
+                            <th>Price</th>
+                            <th>Cost Price</th>
+                            <th>Discount?</th>
+                            <th>Discount Price</th>
                             <th>Action</th>
                         </tr>
                     </tfoot>
@@ -124,12 +132,16 @@
             var table = $('.data-table').DataTable({
                 processing: true,
                 serverSide: true,
-                ajax: "{{ route('brands.index') }}",
+                ajax: "{{ route('products.index') }}",
                 columns: [
                     {data: 'id', name: 'id'},
                     {data: 'name', name: 'name'},
-                    {data: 'slug', name: 'slug'},
                     {data: 'status', name: 'status'},
+                    {data: 'rating', name: 'rating'},
+                    {data: 'price', name: 'price'},
+                    {data: 'cost_price', name: 'cost_price'},
+                    {data: 'is_discount_available', name: 'is_discount_available'},
+                    {data: 'discount_price', name: 'discount_price'},
                     {data: 'action', name: 'action', orderable: false, searchable: false},
                 ]
             });
@@ -165,7 +177,7 @@
                 icon: 'success',
                 title: 'Record Deleted Successfully!'
                 })
-                window.location.href="{{ route('brands.delete','') }}"+"/"+id;
+                window.location.href="{{ route('products.delete','') }}"+"/"+id;
             } else if (
                 /* Read more about handling dismissals below */
                 result.dismiss === Swal.DismissReason.cancel

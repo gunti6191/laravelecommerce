@@ -69,46 +69,61 @@
                   </div>
                   <!-- /.card-header -->
                   <!-- form start -->
-                  <form action="{{ route('products.store') }}" method="post">
+                  <form action="javascript:void(0);" id="form" onsubmit="formValidate();">
                     @csrf
                     <div class="card-body">
                         <div class="row">
                             <div class="col-sm-6">
-                                <div class="form-group">
+                                <div class="form-group form-row">
                                     <label for="name">Name<span class="text-danger"> *</label>
-                                    <input type="text" class="form-control" required name="name" id="name" placeholder="Enter Product Name">
+                                    <input type="text" class="form-control" name="name" id="name" placeholder="Enter Product Name">
+                                    <div class="invalid-feedback">
+                                        <h5>This field is required!</h5>
+                                    </div>
                                 </div>
                             </div>
                             <div class="col-sm-6">
-                                <div class="form-group">
+                                <div class="form-group form-row">
                                     <label for="status">Status<span class="text-danger"> *</label>
-                                    <select class="form-control" required id="status" name="status">
+                                    <select class="form-control" id="status" name="status">
                                         <option></option>
                                         <option>Active</option>
                                         <option>Inactive</option>
                                     </select>
+                                    <div class="invalid-feedback">
+                                        <h5>This field is required!</h5>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-sm-6">
-                                <div class="form-group">
+                                <div class="form-group form-row">
                                     <label for="rating">Rating<span class="text-danger"> *</span></label>
-                                    <input type="number" min='0' max='5' step='0.5' class="form-control" required name="rating" id="rating" placeholder="Enter Value">
+                                    <input type="number" min='0' max='5' step='0.5' class="form-control" name="rating" id="rating" placeholder="Enter Value">
+                                    <div class="invalid-feedback">
+                                        <h5>This field is required!</h5>
+                                    </div>
                                 </div>
                             </div>
                             <div class="col-sm-6">
                                 <div class="row">
                                     <div class="col-sm-6">
-                                        <div class="form-group">
+                                        <div class="form-group form-row">
                                             <label for="price">Price<span class="text-danger"> *</span></label>
-                                            <input type="number" class="form-control" required name="price" id="price" placeholder="Enter Actual Price">
+                                            <input type="number" class="form-control" name="price" id="price" placeholder="Enter Actual Price">
+                                            <div class="invalid-feedback">
+                                                <h5>This field is required!</h5>
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
-                                        <div class="form-group">
+                                        <div class="form-group form-row">
                                             <label for="cost_price">Cost Price<span class="text-danger"> *</span></label>
-                                            <input type="number" class="form-control" required name="cost_price" id="cost_price" placeholder="Enter Cost Price">
+                                            <input type="number" class="form-control" name="cost_price" id="cost_price" placeholder="Enter Cost Price">
+                                            <div class="invalid-feedback">
+                                                <h5>This field is required!</h5>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -116,20 +131,26 @@
                         </div>
                         <div class="row">
                             <div class="col-sm-6">
-                                <div class="form-group">
+                                <div class="form-group form-row">
                                     <label for="is_discount_available">Is Discount Available?<span class="text-danger"> *</span></label>
-                                    <select class="form-control" required id="is_discount_available" name="is_discount_available">
+                                    <select class="form-control" id="is_discount_available" name="is_discount_available">
                                         <option></option>
                                         <option>Yes</option>
                                         <option>No</option>
                                     </select>
+                                    <div class="invalid-feedback">
+                                        <h5>This field is required!</h5>
+                                    </div>
                                 </div>
                             </div>
                             <div class="col-sm-6">
                                 <div class="col-sm-6">
-                                    <div class="form-group">
+                                    <div class="form-group form-row">
                                         <label for="discount_price">Discount Price<span class="text-danger"> *</span></label>
-                                        <input type="number" class="form-control" required name="discount_price" id="discount_price" placeholder="Enter Cost Price">
+                                        <input type="number" class="form-control" name="discount_price" id="discount_price" placeholder="Enter Cost Price">
+                                        <div class="invalid-feedback">
+                                            <h5>This field is required!</h5>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -137,9 +158,12 @@
                         <div class="row">
                             <div class="col-sm-12">
                                 <!-- textarea -->
-                                <div class="form-group">
+                                <div class="form-group form-row">
                                     <label for="short_description">Description<span class="text-danger"> *</span></label>
-                                    <textarea class="form-control" required placeholder="Description" id="short_description" name="short_description" rows="3"></textarea>
+                                    <textarea class="form-control" placeholder="Description" id="short_description" name="short_description" rows="3"></textarea>
+                                    <div class="invalid-feedback">
+                                        <h5>This field is required!</h5>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -147,7 +171,7 @@
                     <!-- /.card-body -->
 
                     <div class="card-footer text-center">
-                      <button type="submit" onclick="add();" class="btn btn-primary btn-lg">CREATE</button>
+                      <button type="submit" class="btn btn-primary btn-lg">CREATE</button>
                     </div>
                   </form>
                 </div>
@@ -187,4 +211,93 @@
 
 
 @section("scripts")
+    <script>
+        function formValidate() {
+            name = $("#name").val();
+            status = $("#status").val();
+            rating = $("#rating").val();
+            price = $("#price").val();
+            cp = $("#cost_price").val();
+            isDis = $("#is_discount_available").val();
+            dp = $("#discount_price").val();
+            desc = $("#short_description").val();
+
+            if(name == ""){
+                $("#name").removeClass("is-valid").addClass("is-invalid");
+            }else{
+                $("#name").removeClass("is-invalid").addClass("is-valid");
+            }
+
+            if(status == ""){
+                $("#status").removeClass("is-valid").addClass("is-invalid");
+            }else{
+                $("#status").removeClass("is-invalid").addClass("is-valid");;
+            }
+
+            if(rating == ""){
+                $("#rating").removeClass("is-valid").addClass("is-invalid");
+            }else{
+                $("#rating").removeClass("is-invalid").addClass("is-valid");
+            }
+
+            if(price == ""){
+                $("#price").removeClass("is-valid").addClass("is-invalid");
+            }else{
+                $("#price").removeClass("is-invalid").addClass("is-valid");
+            }
+
+            if(cp == ""){
+                $("#cost_price").removeClass("is-valid").addClass("is-invalid");
+            }else{
+                $("#cost_price").removeClass("is-invalid").addClass("is-valid");
+            }
+
+            if(isDis == ""){
+                $("#is_discount_available").removeClass("is-valid").addClass("is-invalid");
+            }else{
+                $("#is_discount_available").removeClass("is-invalid").addClass("is-valid");
+            }
+
+            if(dp == ""){
+                $("#discount_price").removeClass("is-valid").addClass("is-invalid");
+            }else{
+                $("#discount_price").removeClass("is-invalid").addClass("is-valid");
+            }
+
+            if(desc == ""){
+                $("#short_description").removeClass("is-valid").addClass("is-invalid");
+            }else{
+                $("#short_description").removeClass("is-invalid").addClass("is-valid");
+            }
+
+            if (name != "" && status != "" && rating != "" && price != "" && cp != "" && isDis != "" && dp != "" && desc != "") {
+
+                var Toast = Swal.mixin({
+                    toast: true,
+                    position: 'top-end',
+                    showConfirmButton: false,
+                    timer: 3000
+                    });
+                    Toast.fire({
+                    icon: 'success',
+                    title: 'Record Added Successfully!'
+                })
+
+                var form = document.getElementById("form");
+
+                // set the action attribute to the desired URL
+                form.action = "{{ route('products.store') }}";
+                form.method = "post";
+
+                // add an event listener to the form's submit event
+                form.addEventListener("submit", function(event) {
+                    // prevent the default form submission behavior
+                    event.preventDefault();
+
+                    // submit the form using the specified URL
+                    form.submit();
+                });
+            }
+        };
+    </script>
 @endsection

@@ -73,13 +73,6 @@
                         </div>
                     </div>
                     <div class="form-group form-row">
-                        <label for="slug">Slug<span class="text-danger"> *</span></label>
-                        <input type="text" id="slug" class="form-control" name="slug" value="{{ $category->slug }}">
-                        <div class="invalid-feedback">
-                            <h5>Enter Slug!</h5>
-                        </div>
-                    </div>
-                    <div class="form-group form-row">
                         <label for="status">Status<span class="text-danger"> *</span></label>
                         <select class="custom-select form-control" id="status" name="status">
                             <option>{{ $category->status }}</option>

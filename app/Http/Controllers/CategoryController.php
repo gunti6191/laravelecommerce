@@ -39,7 +39,7 @@ class CategoryController extends Controller
 
         $category = new Category;
         $category->name=$request->name;
-        $category->slug=$request->slug;
+        $category->slug=$request->name;
         $category->status=$request->status;
         $category->save(); // Row updated in Database table
         return redirect()->route('categories.index');
@@ -58,7 +58,7 @@ class CategoryController extends Controller
 
         $category=Category::where("id","=",$id)->first();
         $category->name=$request->name;
-        $category->slug=$request->slug;
+        $category->slug=$request->name;
         $category->status=$request->status;
         $category->save(); // Row updated in Database table
         return redirect()->route('categories.index');

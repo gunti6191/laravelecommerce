@@ -78,7 +78,6 @@
                         <tr>
                             <th>Id</th>
                             <th>Name</th>
-                            <th>Slug</th>
                             <th>Status</th>
                             <th>Action</th>
                         </tr>
@@ -89,7 +88,6 @@
                         <tr>
                             <th>Id</th>
                             <th>Name</th>
-                            <th>Slug</th>
                             <th>Status</th>
                             <th>Action</th>
                         </tr>
@@ -128,7 +126,6 @@
                 columns: [
                     {data: 'id', name: 'id'},
                     {data: 'name', name: 'name'},
-                    {data: 'slug', name: 'slug'},
                     {data: 'status', name: 'status'},
                     {data: 'action', name: 'action', orderable: false, searchable: false},
                 ]

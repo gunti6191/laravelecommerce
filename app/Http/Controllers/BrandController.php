@@ -39,7 +39,7 @@ class BrandController extends Controller
 
         $brand = new Brand;
         $brand->name=$request->name;
-        $brand->slug=$request->slug;
+        $brand->slug=$request->name;
         $brand->status=$request->status;
         $brand->save(); // Row updated in Database table
         return redirect()->route('brands.index');
@@ -58,7 +58,7 @@ class BrandController extends Controller
 
         $brand=Brand::where("id","=",$id)->first();
         $brand->name=$request->name;
-        $brand->slug=$request->slug;
+        $brand->slug=$request->name;
         $brand->status=$request->status;
         $brand->save(); // Row updated in Database table
         return redirect()->route('brands.index');

@@ -214,7 +214,7 @@
           </li>
           <li class="nav-item">
             <a href="{{ route('users.index') }}" class="nav-link">
-              <i class="nav-icon fas fa-th"></i>
+                <i class="nav-icon fas fa-users"></i>
               <p>
                 Users
                 <span class="right badge badge-danger">New</span>
@@ -223,7 +223,7 @@
           </li>
           <li class="nav-item">
             <a href="{{ route('categories.index') }}" class="nav-link">
-              <i class="nav-icon fas fa-calendar-alt"></i>
+                <i class="nav-icon fas fa-list-ul"></i>
               <p>
                 Categories
                 <span class="right badge badge-danger">New</span>
@@ -232,7 +232,7 @@
           </li>
           <li class="nav-item">
             <a href="{{ route('brands.index') }}" class="nav-link">
-              <i class="nav-icon far fa-image"></i>
+                <i class="nav-icon fab fa-blogger"></i>
               <p>
                 Brands
                 <span class="right badge badge-danger">New</span>
@@ -241,7 +241,7 @@
           </li>
           <li class="nav-item">
             <a href="{{ route('products.index') }}" class="nav-link">
-              <i class="nav-icon fas fa-columns"></i>
+                <i class="nav-icon fab fa-product-hunt"></i>
               <p>
                 Products
               </p>

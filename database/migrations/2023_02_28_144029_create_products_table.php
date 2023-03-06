@@ -15,6 +15,7 @@ class CreateProductsTable extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('category_id')->constrained('categories')->onUpdate('restrict')->onDelete('restrict');
             $table->string('name');
             $table->string('slug');
             $table->text('short_description');
@@ -24,6 +25,7 @@ class CreateProductsTable extends Migration
             $table->decimal('cost_price', $precision = 10, $scale = 2);
             $table->string('is_discount_available');
             $table->decimal('discount_price', $precision = 10, $scale = 2);
+            $table->softDeletes();
             $table->timestamps();
         });
     }

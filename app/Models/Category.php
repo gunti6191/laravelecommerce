@@ -17,6 +17,11 @@ class Category extends Model
     /**
      * Get the options for generating the slug.
      */
+    public function products()
+    {
+        return $this->hasMany(Product::class);
+    }
+
     public function getSlugOptions() : SlugOptions
     {
         return SlugOptions::create()

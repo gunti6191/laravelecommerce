@@ -11,13 +11,12 @@ class ProductsController extends Controller
     function index(Request $request)
     {
         if ($request->ajax()) {
-
             $prod = Product::latest()->get();
             return Datatables::of($prod)
                     ->addIndexColumn()
                     ->addColumn('action', function($row){
-                        $btn = '<a href="'.route("products.edit", $row->slug ).'" class="edit btn btn-success btn-sm mx-3">Edit</a>
-                                <a href="javascript:void(0)" onclick="deleteBtn('.$row->id.');" class="delete btn btn-danger btn-sm">Delete</a>';
+                        $btn = '<a href="'.route("products.edit", $row->slug ).'" class="edit btn btn-success btn-sm mx-3"><i class="fas fa-edit"></i></a>
+                                <a href="javascript:void(0)" onclick="deleteBtn(`'.$row->slug.'`);" class="delete btn btn-danger btn-sm"><i class="fas fa-trash"></i></a>';
 
                         return $btn;
                     })
@@ -44,7 +43,6 @@ class ProductsController extends Controller
         ]);
         $product = new Product;
         $product->name=$request->name;
-        $product->slug=$request->name;
         $product->status=$request->status;
         $product->rating=$request->rating;
         $product->price=$request->price;
@@ -75,7 +73,6 @@ class ProductsController extends Controller
 
         $product=Product::where("slug","=",$slug)->first();
         $product->name=$request->name;
-        $product->slug=$request->name;
         $product->status=$request->status;
         $product->rating=$request->rating;
         $product->price=$request->price;
@@ -86,8 +83,8 @@ class ProductsController extends Controller
         $product->save(); // Row updated in Database table
         return redirect()->route('products.index');
     }
-    function delete($id){
-        $product=Product::where("id","=",$id)->first();
+    function delete($slug){
+        $product=Product::where("slug","=",$slug)->first();
         $product->delete();
         return back();
     }

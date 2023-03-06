@@ -78,12 +78,12 @@
                         <tr>
                             <th>Id</th>
                             <th>Name</th>
-                            <th>Status</th>
                             <th>Rating</th>
                             <th>Price</th>
                             <th>Cost Price</th>
                             <th>Discount?</th>
                             <th>Discount Price</th>
+                            <th>Status</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -93,12 +93,12 @@
                         <tr>
                             <th>Id</th>
                             <th>Name</th>
-                            <th>Status</th>
                             <th>Rating</th>
                             <th>Price</th>
                             <th>Cost Price</th>
                             <th>Discount?</th>
                             <th>Discount Price</th>
+                            <th>Status</th>
                             <th>Action</th>
                         </tr>
                     </tfoot>
@@ -128,7 +128,6 @@
 @section("scripts")
     <script type="text/javascript">
         $(function () {
-
             var table = $('.data-table').DataTable({
                 processing: true,
                 serverSide: true,
@@ -136,16 +135,15 @@
                 columns: [
                     {data: 'id', name: 'id'},
                     {data: 'name', name: 'name'},
-                    {data: 'status', name: 'status'},
                     {data: 'rating', name: 'rating'},
                     {data: 'price', name: 'price'},
                     {data: 'cost_price', name: 'cost_price'},
                     {data: 'is_discount_available', name: 'is_discount_available'},
                     {data: 'discount_price', name: 'discount_price'},
+                    {data: 'status', name: 'status'},
                     {data: 'action', name: 'action', orderable: false, searchable: false},
                 ]
             });
-
         });
 
         function deleteBtn(id){

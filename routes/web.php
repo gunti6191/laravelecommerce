@@ -51,4 +51,4 @@ Route::get('/products/create', [App\Http\Controllers\ProductsController::class, 
 Route::post('/products/store', [App\Http\Controllers\ProductsController::class, 'store'])->name("products.store");
 Route::get('/products/edit/{slug}', [App\Http\Controllers\ProductsController::class, 'edit'])->name("products.edit");
 Route::post('/products/update/{slug}', [App\Http\Controllers\ProductsController::class, 'update'])->name("products.update");
-Route::get('/products/delete/{id}', [App\Http\Controllers\ProductsController::class, 'delete'])->name("products.delete");
+Route::get('/products/delete/{slug}', [App\Http\Controllers\ProductsController::class, 'delete'])->name("products.delete");

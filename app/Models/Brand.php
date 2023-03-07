@@ -14,6 +14,11 @@ class Brand extends Model
     protected $table = 'brands';
     protected $fillable = ['name','slug','status'];
 
+    public function products()
+    {
+        return $this->hasMany(Product::class);
+    }
+
     /**
      * Get the options for generating the slug.
      */

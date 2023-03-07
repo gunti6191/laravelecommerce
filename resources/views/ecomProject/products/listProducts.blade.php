@@ -73,16 +73,18 @@
               </div>
               <!-- /.card-header -->
               <div class="card-body">
-                <table class="table table-bordered data-table">
+                <table class="table table-bordered border-dark data-table">
                     <thead>
                         <tr>
                             <th>Id</th>
                             <th>Name</th>
+                            <th>Category</th>
+                            <th>Brand</th>
                             <th>Rating</th>
                             <th>Price</th>
-                            <th>Cost Price</th>
+                            <th>CP</th>
                             <th>Discount?</th>
-                            <th>Discount Price</th>
+                            <th>DP</th>
                             <th>Status</th>
                             <th>Action</th>
                         </tr>
@@ -93,11 +95,13 @@
                         <tr>
                             <th>Id</th>
                             <th>Name</th>
+                            <th>Category</th>
+                            <th>Brand</th>
                             <th>Rating</th>
                             <th>Price</th>
-                            <th>Cost Price</th>
+                            <th>CP</th>
                             <th>Discount?</th>
-                            <th>Discount Price</th>
+                            <th>DP</th>
                             <th>Status</th>
                             <th>Action</th>
                         </tr>
@@ -135,6 +139,8 @@
                 columns: [
                     {data: 'id', name: 'id'},
                     {data: 'name', name: 'name'},
+                    {data: 'category', name: 'category'},
+                    {data: 'brand', name: 'brand'},
                     {data: 'rating', name: 'rating'},
                     {data: 'price', name: 'price'},
                     {data: 'cost_price', name: 'cost_price'},

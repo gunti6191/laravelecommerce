@@ -99,6 +99,38 @@
                         <div class="row">
                             <div class="col-sm-6">
                                 <div class="form-group form-row">
+                                    <label for="category_id">Category<span class="text-danger"> *</label>
+                                    <select class="form-control" id="category_id" name="category_id">
+                                        <option></option>
+                                        @foreach($categories as $category)
+                                            <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                        @endforeach
+
+                                    </select>
+                                    <div class="invalid-feedback">
+                                        <h5>This field is required!</h5>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group form-row">
+                                    <label for="brand_id">Brand<span class="text-danger"> *</label>
+                                    <select class="form-control" id="brand_id" name="brand_id">
+                                        <option></option>
+                                        @foreach($brands as $brand)
+                                            <option value="{{ $brand->id }}">{{ $brand->name }}</option>
+                                        @endforeach
+
+                                    </select>
+                                    <div class="invalid-feedback">
+                                        <h5>This field is required!</h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="form-group form-row">
                                     <label for="rating">Rating<span class="text-danger"> *</span></label>
                                     <input type="number" min='0' max='5' step='0.5' class="form-control" name="rating" id="rating" placeholder="Enter Value">
                                     <div class="invalid-feedback">
@@ -215,6 +247,8 @@
         function formValidate() {
             name = $("#name").val();
             status = $("#status").val();
+            category_id = $("#category_id").val();
+            brand_id = $("#brand_id").val();
             rating = $("#rating").val();
             price = $("#price").val();
             cp = $("#cost_price").val();
@@ -232,6 +266,18 @@
                 $("#status").removeClass("is-valid").addClass("is-invalid");
             }else{
                 $("#status").removeClass("is-invalid").addClass("is-valid");;
+            }
+
+            if(category_id == ""){
+                $("#category_id").removeClass("is-valid").addClass("is-invalid");
+            }else{
+                $("#category_id").removeClass("is-invalid").addClass("is-valid");;
+            }
+
+            if(brand_id == ""){
+                $("#brand_id").removeClass("is-valid").addClass("is-invalid");
+            }else{
+                $("#brand_id").removeClass("is-invalid").addClass("is-valid");;
             }
 
             if(rating == ""){
@@ -270,7 +316,7 @@
                 $("#short_description").removeClass("is-invalid").addClass("is-valid");
             }
 
-            if (name != "" && status != "" && rating != "" && price != "" && cp != "" && isDis != "" && dp != "" && desc != "") {
+            if (name != "" && status != "" && category_id != "" && brand_id != "" && rating != "" && price != "" && cp != "" && isDis != "" && dp != "" && desc != "") {
 
                 var Toast = Swal.mixin({
                     toast: true,
